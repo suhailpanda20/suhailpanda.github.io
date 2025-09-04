@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suhail Panda • Dark Capricorn Portfolio</title>
+  <meta name="description" content="Responsive dark portfolio with Capricorn background, gradient headings, floating particles, shooting stars and smooth scroll animations. Single-file HTML + CSS." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#05060b;
+      --panel:#0c1118;
+      --muted:#9aa7bf;
+      --text:#eaf1ff;
+      --accentA: #7ee7d9;
+      --accentB: #b388ff;
+      --accentC: #ffd166;
+      --glass: rgba(255,255,255,0.03);
+      --radius:18px;
+      --shadow: 0 8px 30px rgba(2,8,23,0.7);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,Arial; color:var(--text); background: radial-gradient(900px 500px at 15% 10%, rgba(123,97,255,0.06), transparent 20%), radial-gradient(700px 400px at 90% 20%, rgba(126,231,217,0.03), transparent 18%), linear-gradient(180deg,var(--bg), #02040a 85%); min-height:100vh; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; overflow-x:hidden }
+
+    .capricorn-bg{ position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.95; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'> <defs> <radialGradient id='g1' cx='50%' cy='50%'> <stop offset='0%' stop-color='%2300ffd1' stop-opacity='0.07'/> <stop offset='100%' stop-color='%23ffd166' stop-opacity='0'/> </radialGradient> </defs> <rect width='1200' height='800' fill='transparent'/> <g stroke='%23b388ff' stroke-width='1.6' fill='none' opacity='0.8'> <polyline points='160,200 240,250 320,230 410,270 510,245 610,305 730,285 840,360 920,330'/> </g> <g fill='%23ffffff' opacity='0.9'> <circle cx='160' cy='200' r='2.6'/> <circle cx='240' cy='250' r='3.4'/> <circle cx='320' cy='230' r='2.4'/> <circle cx='410' cy='270' r='2.8'/> <circle cx='510' cy='245' r='3.6'/> <circle cx='610' cy='305' r='2.4'/> <circle cx='730' cy='285' r='2.8'/> <circle cx='840' cy='360' r='3.2'/> <circle cx='920' cy='330' r='2.4'/> </g> <g transform='translate(820,70)'> <circle cx='76' cy='76' r='66' fill='url(%23g1)' opacity='0.95'/> <text x='76' y='103' text-anchor='middle' font-size='110' font-family='Poppins, sans-serif' fill='%23ffd166'>&#9809;</text> </g> </svg>"); background-position:center; background-size:cover; mix-blend-mode:screen }
+
+    /* Floating glowing particles */
+    .particles, .particles::before, .particles::after{ position:fixed; inset:0; z-index:1; pointer-events:none; background-repeat:repeat; opacity:0.8 }
+    .particles{ background-image: radial-gradient(2px 2px at 5% 12%, rgba(255,255,255,0.9) 50%, transparent 52%), radial-gradient(1.6px 1.6px at 22% 68%, rgba(255,255,255,0.9) 50%, transparent 52%); animation: move1 18s linear infinite; mix-blend-mode:screen }
+    .particles::before{ content:''; background-image: radial-gradient(1.4px 1.4px at 40% 30%, rgba(255,255,255,0.85) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 80% 80%, rgba(255,255,255,0.8) 50%, transparent 52%); animation: move2 25s linear infinite; opacity:0.7 }
+    .particles::after{ content:''; background-image: radial-gradient(2.4px 2.4px at 58% 18%, rgba(255,255,255,0.9) 50%, transparent 52%); animation: twinkle 3.8s ease-in-out infinite alternate; opacity:0.6 }
+
+    @keyframes move1{ from{transform:translateY(0) translateX(0)} to{transform:translateY(-120px) translateX(80px)} }
+    @keyframes move2{ from{transform:translateY(0) translateX(0)} to{transform:translateY(80px) translateX(-60px)} }
+    @keyframes twinkle{ from{opacity:0.35} to{opacity:0.9} }
+
+    /* Shooting stars */
+    .shooting-star{ position:fixed; top:-10px; width:2px; height:80px; background:linear-gradient(to bottom, white, transparent); opacity:0.8; transform:rotate(45deg); animation:shoot 5s linear infinite; z-index:2; }
+    .shooting-star:nth-child(1){ left:20%; animation-delay:1s }
+    .shooting-star:nth-child(2){ left:60%; animation-delay:3s }
+    .shooting-star:nth-child(3){ left:80%; animation-delay:5s }
+
+    @keyframes shoot{ 0%{ top:-100px; opacity:0 } 10%{ opacity:1 } 50%{ top:110%; opacity:0 } 100%{ opacity:0 } }
+
+    header{ position:sticky; top:0; z-index:4; backdrop-filter: blur(6px); background: linear-gradient(180deg, rgba(5,8,14,0.6), rgba(5,8,14,0.15)); border-bottom:1px solid rgba(255,255,255,0.03) }
+    nav{ max-width:1100px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; justify-content:space-between }
+    .brand{ display:flex; gap:12px; align-items:center; font-weight:800 }
+    .logo{ width:44px; height:44px; border-radius:12px; display:grid; place-items:center; background:linear-gradient(135deg,var(--accentB),var(--accentA)); color:#071426; font-weight:900 }
+    .nav-links a{ color:var(--muted); text-decoration:none; margin-left:18px; padding:8px 12px; border-radius:10px; font-weight:700 }
+    .nav-links a:hover{ color:var(--text); background: rgba(255,255,255,0.02) }
+
+    .container{ max-width:1100px; margin:0 auto; padding:80px 20px; position:relative; z-index:3 }
+
+    .hero{ display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center }
+    .card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,0.03) }
+
+    h1{ font-size:clamp(30px,5vw,52px); margin:6px 0 10px; line-height:1.02 }
+    .name-gradient{ background: linear-gradient(90deg,var(--accentA),var(--accentB),var(--accentC)); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:900 }
+    .tagline{ color:var(--muted); font-size:15px }
+
+    .chips{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px }
+    .chip{ padding:8px 12px; border-radius:999px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); color:var(--muted); font-weight:800 }
+
+    .cta{ margin-top:18px; display:flex; gap:12px }
+    .btn{ padding:10px 16px; border-radius:12px; text-decoration:none; font-weight:800 }
+    .btn.primary{ background: linear-gradient(90deg,var(--accentA),var(--accentB)); color:#071426 }
+    .btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text) }
+
+    .section-title{ font-size:clamp(20px,4vw,34px); margin:0 0 12px; font-weight:800; background:linear-gradient(90deg,var(--accentB),var(--accentA)); -webkit-background-clip:text; color:transparent }
+
+    .grid.auto-fit{ display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)) }
+    .skill{ padding:12px 14px; border-radius:12px; background:rgba(255,255,255,0.015); border:1px solid rgba(255,255,255,0.03); color:var(--muted); font-weight:700 }
+
+    .project h3{ margin:0 }
+    .meta{ color:var(--muted); font-size:13px }
+    .pill{ display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); color:var(--muted); font-weight:700 }
+
+    .card{ transform: translateY(0); transition: transform 350ms cubic-bezier(.2,.9,.2,1), box-shadow 350ms }
+    .card:hover{ transform: translateY(-6px); box-shadow: 0 18px 40px rgba(4,10,30,0.7) }
+
+    section{ scroll-margin-top:84px; margin-top:26px }
+    .reveal{ opacity:0; transform:translateY(18px); transition: opacity 600ms ease, transform 600ms ease }
+    .reveal.in-view{ opacity:1; transform:none }
+
+    footer{ text-align:center; padding:40px 20px 80px; color:var(--muted) }
+
+    @media (max-width:880px){ .hero{ grid-template-columns:1fr } .nav-links{ display:none } .container{ padding:60px 16px } }
+  </style>
+</head>
+<body>
+  <div class="capricorn-bg" aria-hidden="true"></div>
+  <div class="particles" aria-hidden="true"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+
+  <header>
+    <nav>
+      <div class="brand"><div class="logo">♑</div><div>Suhail Panda</div></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero" id="home">
+        <div class="card reveal in-view">
+          <p class="chip">B.Tech • AI & ML • Amity University Haryana</p>
+          <h1>Hi, I'm <span class="name-gradient">Suhail Panda</span></h1>
+          <p class="tagline">I design ML algorithms and lightweight web interfaces. My goal: build a super AI model that helps people in daily life.</p>
+          <div class="chips" aria-label="skills">
+            <span class="chip">ML Algorithms</span>
+            <span class="chip">Python</span>
+            <span class="chip">HTML & CSS</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">C Projects</span>
+          </div>
+          <div class="cta">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn ghost" href="#contact">Contact</a>
+          </div>
+        </div>
+        <div class="card reveal in-view" aria-hidden="true">
+          <h2 class="section-title">Capricorn — Dark Cosmic</h2>
+          <p style="color:var(--muted)">This design uses a dark starfield and a Capricorn glyph in the background, gradient headings, floating particles, shooting stars and smooth hover animations — all with only HTML & CSS for speed and portability.</p>
+        </div>
+      </section>
+
+      <section id="about" class="reveal in-view">
+        <h2 class="section-title">About Me</h2>
+        <div class="card">
+          <p style="color:var(--muted)">I'm a B.Tech student in AI & ML at Amity University Haryana. I build prototypes that combine practical ML with clean UX. I'm focused on supervised learning, model evaluation, and privacy-aware design.</p>
+        </div>
+      </section>
+
+      <section id="skills" class="reveal in-view">
+        <h2 class="section-title">Skills</h2>
+        <div class="grid auto-fit">
+          <div class="skill">Machine Learning (algorithms & evaluation)</div>
+          <div class="skill">Python (NumPy, pandas, scikit‑learn)</div>
+          <div class="skill">HTML & CSS (responsive)</div>
+          <div class="skill">MySQL (queries & schemas)</div>
+          <div class="skill">C Programming (2 projects)</div>
+          <div class="skill">Git & GitHub</div>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal in-view">
+        <h2 class="section-title">Projects</h2>
+        <div class="grid auto-fit">
+          <article class="card project">
+            <h3>Smart Study Planner (prototype)</h3>
+            <p class="meta">ML • Python</p>
+            <p style="color:var(--muted)">Adaptive planner using spaced repetition signals and lightweight classifiers to recommend topics.</p>
+            <div style="margin-top:8px"><span class="pill">Python</span> <span class="pill">scikit-learn</span></div>
+          </article>
+
+          <article class="card project">
+            <h3>Dark Capricorn Portfolio</h3>
+            <p class="meta">HTML + CSS</p>
+            <p style="color:var(--muted)">Single-file, responsive portfolio with glowing particles, Capricorn constellation backdrop, and shooting stars.</p>
+            <div style="margin-top:8px"><span class="pill">HTML</span> <span class="pill">CSS</span></div>
+          </article>
+
+          <article class="card project">
+            <h3>C Project #1</h3>
+            <p class="meta">C</p>
+            <p style="color:var(--muted)">Brief description of your first C project (e.g., guessing game).</p>
+            <div style="margin-top:8px"><span class="pill">C</span></div>
+          </article>
+
+          <article class="card project">
+            <h3>C Project #2</h3>
+            <p class="meta">C</p>
+            <p style="color:var(--muted)">Brief description of your second C project (e.g., mini library system).</p>
+            <div style="margin-top:8px"><span class="pill">C</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal in-view">
+        <h2 class="section-title">Contact</h2>
+        <div class="card contact-card">
+          <p style="color:var(--muted)">Open to internships and collaborations. Email: <a href="mailto:suhailpanda@example.com" style="color:var

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suhail Panda • Dark Capricorn Portfolio</title>
+  <meta name="description" content="Suhail Panda — B.Tech AI & ML @ Amity University Haryana. Dark-themed HTML+CSS portfolio with Capricorn background." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;           /* deep navy */
+      --card:#0f1724;         /* slightly lighter */
+      --muted:#97a0b8;
+      --text:#e6eef8;
+      --accent1:#7ee7d9;      /* aqua */
+      --accent2:#b388ff;      /* violet */
+      --accent3:#ffd166;      /* warm gold */
+      --glass: rgba(255,255,255,0.04);
+      --radius:18px;
+      --shadow: 0 10px 30px rgba(2,6,23,0.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:var(--text); background: radial-gradient(800px 400px at 10% 10%, rgba(123,97,255,0.06), transparent 20%), radial-gradient(700px 350px at 90% 20%, rgba(126,231,217,0.04), transparent 18%), linear-gradient(180deg,var(--bg), #07101a 80%);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; overflow-x:hidden;
+    }
+
+    /* Capricorn SVG background (dark) */
+    .capricorn-bg{
+      position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.9;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'> <defs> <radialGradient id='g1' cx='50%' cy='50%'> <stop offset='0%' stop-color='%2300ffd1' stop-opacity='0.08'/> <stop offset='100%' stop-color='%2300ffd1' stop-opacity='0'/> </radialGradient> <filter id='b'><feGaussianBlur stdDeviation='2'/></filter> </defs> <rect width='1200' height='800' fill='transparent'/> <g stroke='%23b388ff' stroke-width='1.8' fill='none' opacity='0.8'> <polyline points='160,200 240,250 320,230 410,270 510,245 610,305 730,285 840,360 920,330'/> </g> <g fill='%23ffffff' opacity='0.9'> <circle cx='160' cy='200' r='2.8'/> <circle cx='240' cy='250' r='3.6'/> <circle cx='320' cy='230' r='2.6'/> <circle cx='410' cy='270' r='3'/> <circle cx='510' cy='245' r='3.8'/> <circle cx='610' cy='305' r='2.6'/> <circle cx='730' cy='285' r='3.2'/> <circle cx='840' cy='360' r='3.4'/> <circle cx='920' cy='330' r='2.8'/> </g> <g transform='translate(840,80)'> <circle cx='76' cy='76' r='66' fill='url(%23g1)' filter='url(%23b)' opacity='0.9'/> <text x='76' y='103' text-anchor='middle' font-size='110' font-family='Poppins, sans-serif' fill='%23ffd166'>&#9809;</text> </g> <g fill='%23ffffff' opacity='0.06'> <circle cx='70' cy='720' r='1.8'/> <circle cx='220' cy='560' r='1.6'/> <circle cx='400' cy='720' r='1.4'/> <circle cx='540' cy='640' r='1.2'/> <circle cx='760' cy='620' r='1.6'/> <circle cx='980' cy='740' r='1.8'/> </g> </svg>");
+      background-position:center; background-size:cover; transform:translateZ(0);
+      mix-blend-mode:screen;
+    }
+
+    header{ position:sticky; top:0; z-index:5; background:linear-gradient(180deg, rgba(3,6,12,0.6), rgba(3,6,12,0.2)); border-bottom:1px solid rgba(255,255,255,0.03); backdrop-filter: blur(6px); }
+    nav{ max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:12px 20px; }
+    .brand{ display:flex; align-items:center; gap:12px; font-weight:800; }
+    .logo{ width:40px; height:40px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg,var(--accent2),var(--accent1)); color:#051426; font-weight:900; box-shadow: 0 6px 20px rgba(12,18,40,0.7); }
+    .nav-links a{ color:var(--muted); text-decoration:none; margin-left:18px; padding:8px 12px; border-radius:10px; font-weight:600 }
+    .nav-links a:hover{ color:var(--text); background: rgba(255,255,255,0.02); }
+
+    .container{ max-width:1100px; margin: 0 auto; padding: 80px 20px; position:relative; z-index:2; }
+    .hero{ display:grid; grid-template-columns:1.1fr .9fr; gap:28px; align-items:center; }
+
+    .card{ background: linear-gradient(180deg,var(--card), rgba(10,13,20,0.6)); border-radius: var(--radius); padding:24px; box-shadow: var(--shadow); border:1px solid rgba(255,255,255,0.03); }
+    h1{ font-size: clamp(34px,5vw,56px); margin:8px 0 10px; line-height:1.05 }
+    .highlight{ background: linear-gradient(90deg,var(--accent1),var(--accent2)); -webkit-background-clip:text; color:transparent; font-weight:800 }
+    .tagline{ color:var(--muted); font-size:16px; }
+
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px }
+    .chip{ padding:8px 12px; border-radius:999px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); color:var(--muted); font-weight:700 }
+    .cta{ margin-top:18px; display:flex; gap:12px }
+    .btn{ padding:10px 16px; border-radius:12px; text-decoration:none; font-weight:800; display:inline-block }
+    .btn.primary{ background: linear-gradient(90deg,var(--accent1),var(--accent2)); color:#071426 }
+    .btn.ghost{ background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--text) }
+
+    /* Sections */
+    section{ scroll-margin-top: 76px; margin-top:22px }
+    .section-title{ font-size: clamp(22px,4vw,34px); margin:0 0 12px; }
+    .grid.auto-fit{ display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); }
+
+    .skill{ padding:10px 14px; border-radius:12px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); color:var(--muted); font-weight:700 }
+
+    .project h3{ margin:0; }
+    .project .meta{ color:var(--muted); font-size:13px }
+    .pill{ display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); margin-right:8px; color:var(--muted); font-weight:700 }
+
+    .contact-card{text-align:center}
+
+    footer{ text-align:center; padding:40px 20px 80px; color:var(--muted) }
+
+    /* subtle floating stars overlay */
+    .stars{ position:fixed; inset:0; z-index:1; pointer-events:none; background-image: radial-gradient(1.6px 1.6px at 14% 22%, rgba(255,255,255,0.06) 50%, transparent 52%), radial-gradient(1.2px 1.2px at 36% 70%, rgba(255,255,255,0.05) 50%, transparent 52%); opacity:0.65; mix-blend-mode:screen }
+
+    @media (max-width:880px){ .hero{ grid-template-columns:1fr } .nav-links{ display:none } .container{ padding:60px 16px } }
+  </style>
+</head>
+<body>
+  <div class="capricorn-bg" aria-hidden="true"></div>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header>
+    <nav>
+      <div class="brand"><div class="logo">♑</div><div>Suhail&nbsp;Panda</div></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero" id="home">
+        <div class="card">
+          <p class="chip">B.Tech • AI & ML • Amity University Haryana</p>
+          <h1>Hi, I'm <span class="highlight">Suhail Panda</span> — crafting intelligent, privacy-first ML tools.</h1>
+          <p class="tagline">Passionate about machine learning algorithms and building a <strong>super AI model</strong> to help people in daily life. Skills: Frontend (3 months), Python, MySQL, and C projects.</p>
+
+          <div class="chips" aria-label="focus areas">
+            <span class="chip">ML Algorithms</span>
+            <span class="chip">Python</span>
+            <span class="chip">Frontend (HTML/CSS)</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">C Projects</span>
+          </div>
+
+          <div class="cta">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn ghost" href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="card" aria-hidden="true">
+          <h2 class="section-title">Capricorn — Dark Edition</h2>
+          <p style="color:var(--muted)">A moody, cosmic backdrop with the Capricorn glyph and constellation — designed to feel focused and professional while keeping a distinct zodiac personality.</p>
+          <p style="margin-top:10px; color:var(--muted); font-size:14px">Fast (HTML & CSS only), accessible, and easy to host — paste into a single .html file.</p>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="card">
+          <p>I'm a B.Tech student specializing in Artificial Intelligence & Machine Learning at Amity University Haryana. I enjoy designing ML systems that are practical and ethical. My long-term aim is to build an everyday AI assistant that helps people while preserving privacy.</p>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="card grid auto-fit" style="padding:18px">
+          <div class="skill">Machine Learning (algorithms & evaluation)</div>
+          <div class="skill">Python (NumPy, pandas, scikit-learn)</div>
+          <div class="skill">HTML & CSS (responsive)</div>
+          <div class="skill">MySQL (queries & schemas)</div>
+          <div class="skill">C Programming (2 projects)</div>
+          <div class="skill">Git & GitHub</div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="grid auto-fit">
+          <article class="card project">
+            <h3>Smart Study Planner (prototype)</h3>
+            <p class="meta">ML • Python</p>
+            <p style="color:var(--muted)">Adaptive planner that uses simple models to prioritize weak topics via spaced repetition signals.</p>
+            <div style="margin-top:8px">
+              <span class="pill">Python</span>
+              <span class="pill">scikit-learn</span>
+            </div>
+          </article>
+
+          <article class="card project">
+            <h3>Dark Capricorn Portfolio</h3>
+            <p class="meta">HTML + CSS only</p>
+            <p style="color:var(--muted)">Single-file portfolio with a dark Capricorn-themed SVG background — responsive and accessible.</p>
+            <div style="margin-top:8px">
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+            </div>
+          </article>
+
+          <article class="card project">
+            <h3>C Project #1</h3>
+            <p class="meta">C</p>
+            <p style="color:var(--muted)">Describe your first C project here (example: number guessing game).</p>
+            <div style="margin-top:8px">
+              <span class="pill">C</span>
+            </div>
+          </article>
+
+          <article class="card project">
+            <h3>C Project #2</h3>
+            <p class="meta">C</p>
+            <p style="color:var(--muted)">Describe your second C project here (example: mini library system with file I/O).</p>
+            <div style="margin-top:8px">
+              <span class="pill">C</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="card contact-card">
+          <p style="color:var(--muted)">Open to internships, collaborations, and ML-focused projects.</p>
+          <p style="margin-top:6px">Email: <a href="mailto:suhailpanda@example.com" style="color:var(--accent3); text-decoration:none">suhailpanda@example.com</a> • GitHub: <a href="#" style="color:var(--muted); text-decoration:none">github.com/suhailpanda</a></p>
+          <div class="cta" style="justify-content:center; margin-top:12px">
+            <a class="btn primary" href="#" download>Download Résumé</a>
+            <a class="btn ghost" href="#home">Back to top ↑</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <small>© <span id="year"></span> Suhail Panda • Built with HTML & CSS • Theme: Dark Capricorn</small>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
